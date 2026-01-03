@@ -3,14 +3,29 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext";
+import { NotificationProvider } from "./lib/notifications";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Protected from "./components/Protected";
+import AdventurerLeaderboard from "./pages/AdventurerLeaderboard";
+import AdminAnomalies from "./pages/AdminAnomalies";
+import NPCQuestBoard from "./pages/NPCQuestBoard";
+import NPCApplications from "./pages/NPCApplications";
+import NPCCompletions from "./pages/NPCCompletions";
+import AdventurerQuestBoard from "./pages/AdventurerQuestBoard";
+import AdventurerApplications from "./pages/AdventurerApplications";
+import GuildmasterChats from "./pages/GuildmasterChats";
+import AdminConflicts from "./pages/AdminConflicts";
+import AdminTransactions from "./pages/AdminTransactions";
+
 
 const router = createBrowserRouter([
+  // public routes
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
+
+  // protected app root
   {
     path: "/",
     element: (
@@ -19,12 +34,94 @@ const router = createBrowserRouter([
       </Protected>
     ),
   },
+  {
+    path: "/leaderboard",
+    element: (
+      <Protected>
+        <AdventurerLeaderboard />
+      </Protected>
+    ),
+  },
+  {
+    path: "/admin/anomalies",
+    element: (
+      <Protected roles={["GUILD_MASTER"]}>
+        <AdminAnomalies />
+      </Protected>
+    ),
+  },
+  {
+    path: "/npc/quests",
+    element: (
+      <Protected roles={["NPC"]}>
+        <NPCQuestBoard />
+      </Protected>
+    ),
+  },
+  {
+    path: "/npc/applications",
+    element: (
+      <Protected roles={["NPC"]}>
+        <NPCApplications />
+      </Protected>
+    ),
+  },
+  {
+    path: "/npc/completions",
+    element: (
+      <Protected roles={["NPC"]}>
+        <NPCCompletions />
+      </Protected>
+    ),
+  },
+  {
+    path: "/adventurer/quests",
+    element: (
+      <Protected roles={["ADVENTURER"]}>
+        <AdventurerQuestBoard />
+      </Protected>
+    ),
+  },
+  {
+    path: "/adventurer/applications",
+    element: (
+      <Protected roles={["ADVENTURER"]}>
+        <AdventurerApplications />
+      </Protected>
+    ),
+  },
+  {
+    path: "/admin/chats",
+    element: (
+      <Protected roles={["GUILD_MASTER"]}>
+        <GuildmasterChats />
+      </Protected>
+    ),
+  },
+  {
+    path: "/admin/conflicts",
+    element: (
+      <Protected roles={["GUILD_MASTER"]}>
+        <AdminConflicts />
+      </Protected>
+    ),
+  },
+  {
+    path: "/admin/transactions",
+    element: (
+      <Protected roles={["GUILD_MASTER"]}>
+        <AdminTransactions />
+      </Protected>
+    ),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <NotificationProvider>
+        <RouterProvider router={router} />
+      </NotificationProvider>
     </AuthProvider>
   </React.StrictMode>
 );
