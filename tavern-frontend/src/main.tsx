@@ -18,7 +18,8 @@ import AdventurerApplications from "./pages/AdventurerApplications";
 import GuildmasterChats from "./pages/GuildmasterChats";
 import AdminConflicts from "./pages/AdminConflicts";
 import AdminTransactions from "./pages/AdminTransactions";
-
+import ScrollOfDeeds from "./pages/ScrollOfDeeds";
+import NPCSpendingDashboard from "./pages/NPCSpendingDashboard";
 
 const router = createBrowserRouter([
   // public routes
