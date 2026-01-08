@@ -43,6 +43,22 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/certificate",
+    element: (
+      <Protected>
+        <ScrollOfDeeds />
+      </Protected>
+    ),
+  },
+  {
+    path: "/npc/spending",
+    element: (
+      <Protected roles={["NPC"]}>
+        <NPCSpendingDashboard />
+      </Protected>
+    ),
+  },
+  {
     path: "/admin/anomalies",
     element: (
       <Protected roles={["GUILD_MASTER"]}>
