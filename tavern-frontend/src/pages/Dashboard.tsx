@@ -146,12 +146,15 @@ export default function Dashboard() {
                   Review submitted reports and approve payments.
                 </div>
               </Link>
-              <div className="rounded-xl border border-slate-700 bg-slate-950/70 px-4 py-3 text-sm opacity-80">
-                <div className="font-semibold">💬 Quest Chats</div>
-                <div className="text-xs text-slate-400">
-                  Coming soon: communicate with adventurers and guildmaster.
+              <Link
+                to="/npc/spending"
+                className="rounded-xl border border-amber-500/40 bg-slate-950/70 px-4 py-3 text-sm hover:bg-amber-500/10"
+              >
+                <div className="font-semibold">💰 Spending Dashboard</div>
+                <div className="text-xs text-slate-300">
+                  Track quest expenses and analytics.
                 </div>
-              </div>
+              </Link>
             </div>
           </section>
         )}
@@ -238,6 +241,15 @@ export default function Dashboard() {
                   <div className="font-semibold">⚔️ Full Quest Board</div>
                   <div className="text-xs text-slate-300">
                     Browse all quests with search and filters.
+                  </div>
+                </Link>
+                <Link
+                  to="/certificate"
+                  className="rounded-xl border border-amber-500/40 bg-slate-950/70 px-4 py-3 text-sm hover:bg-amber-500/10"
+                >
+                  <div className="font-semibold">📜 Scroll of Deeds</div>
+                  <div className="text-xs text-slate-300">
+                    Generate your achievement certificate.
                   </div>
                 </Link>
               </div>
